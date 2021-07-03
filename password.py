@@ -1,6 +1,6 @@
 import re
 
-with open("keylog.txt", "r") as file:
+with open('keylog.txt', 'r') as file:
   keylog = file.read().splitlines()
 
 def get_password(keylog):
@@ -22,7 +22,7 @@ def get_password(keylog):
       if set(str_password) == all_numbers:
           tested = 0
           for value in keylog:
-              if not re.search(r"{0}.*{1}.*{2}".format(value[0],value[1],value[2]), str_password):
+              if not re.search(r'{0}.*{1}.*{2}'.format(value[0],value[1],value[2]), str_password):
                   break
               tested += 1
           if tested == len(keylog):
@@ -30,7 +30,7 @@ def get_password(keylog):
               break
       password+=1
 
-  return {"password": password, "minimum_theoretical_length": minimum_theoretical_length} 
+  return {'password': password, 'minimum_theoretical_length': minimum_theoretical_length} 
 
 def has_minimum_theoretical_length(minimum_theoretical_length, password):
   password = str(password)
@@ -61,8 +61,8 @@ def is_valid_password(keylog, password):
   return message
 
 get_password = get_password(keylog)
-password = get_password["password"]
-minimum_theoretical_length = get_password["minimum_theoretical_length"]
+password = get_password['password']
+minimum_theoretical_length = get_password['minimum_theoretical_length']
 print('Password: ', password)
 print(has_minimum_theoretical_length(minimum_theoretical_length, password))
 print(is_valid_password(keylog, password))

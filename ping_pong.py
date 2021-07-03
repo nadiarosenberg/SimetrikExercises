@@ -1,5 +1,6 @@
 import numpy as np
 import functools
+import json
 
 names = ['Ana','Jose','Juan']
 # ana = 0
@@ -37,7 +38,7 @@ for i in posibilities:
         else:
             winner = names[player_2]
             loser = names[player_1]
-        history.append({"player_1": names[player_1], "player_2": names[player_2], "winner": winner, "loser": loser})
+        history.append({'Match': k+1, 'player_1': names[player_1], 'player_2': names[player_2], 'winner': winner, 'loser': loser})
         
         if win == 0: 
             aux = benched_player    
@@ -51,7 +52,9 @@ for i in posibilities:
             winner = names[player_2]
 
     if remaining_matches == [0,0,0]:
-        print('2nd match loser: ', history[1]['loser'])
-        print('')
-        print(history)
+        result = {'2nd_match_loser': history[1]['loser'], 'history': history }
+        json_result = json.dumps(result, indent=4)
+        print(json_result,  file=open('ping_pong_result.json', 'wt'))
+        print('2nd_match_loser: ', history[1]['loser'])
+        print('History of matches exported in ping_pong_result.json')
         break
