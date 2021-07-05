@@ -55,6 +55,6 @@ for i in posibilities:
         result = {'2nd_match_loser': history[1]['loser'], 'history': history }
         json_result = json.dumps(result, indent=4)
         print(json_result,  file=open('ping_pong_result.json', 'wt'))
-        print('2nd_match_loser: ', history[1]['loser'])
+        print('2nd match loser: ', history[1]['loser'])
         print('History of matches exported in ping_pong_result.json')
         break
