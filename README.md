@@ -12,7 +12,7 @@ For windows:
 
         > pip install numpy
 
-3. Run excercises:
+3. Run exercises:
 
         > python ping_pong.py
         > python password.py
